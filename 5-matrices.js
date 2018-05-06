@@ -13,32 +13,32 @@ function writeExpr(
 }
 
 function calc(dimensStr, resEl){
-    let arr = dimensStr.split(' ').map( (v) => {return parseInt(v);});
-    let resMatr = [], middleMatr = [];
-    let resStr = '';
-    for(let i = 0; i < arr.length - 1; i++){
+    var arr = dimensStr.split(' ').map( function(v){return parseInt(v);});
+    var resMatr = [], middleMatr = [];
+    var resStr = '';
+    for(var i = 0; i < arr.length - 1; i++){
         resMatr.push([]);
         middleMatr.push([]);
-        for(let j = 0; j < arr.length - 1; j++){
+        for(var j = 0; j < arr.length - 1; j++){
             resMatr[i].push(0);
             middleMatr[i].push(0);
         }
     }
-    let firstStr = '';
-    for(let i = 0; i < resMatr.length; i++){
+    var firstStr = '';
+    for(var i = 0; i < resMatr.length; i++){
         firstStr += ' = f(' + (i + 1) + ', ' + (i + 1) + ')'
     }
     firstStr = firstStr.substr(3, firstStr.length) + ' = 0';
     resStr += '<div>' + firstStr + '</div>';
 
-    for(let len = 1; len < arr.length - 1; len++){
-        for(let start = 0; start < (arr.length - 1 - len); start++){
-            let minValue=0;
-            let minMiddle=0;
-            let firstIteration=true;
-            let curFStrHead = 'f(' + (start + 1) + ', ' + (start + len + 1) + ') = ', curFStr = '', curFArr = [];
-            for(let middle=start; middle<(start+len); middle++){
-                let funcValue =
+    for(var len = 1; len < arr.length - 1; len++){
+        for(var start = 0; start < (arr.length - 1 - len); start++){
+            var minValue=0;
+            var minMiddle=0;
+            var firstIteration=true;
+            var curFStrHead = 'f(' + (start + 1) + ', ' + (start + len + 1) + ') = ', curFStr = '', curFArr = [];
+            for(var middle=start; middle<(start+len); middle++){
+                var funcValue =
                     resMatr[start][middle]+
                     resMatr[middle+1][start+len]+
                     arr[start]*arr[middle+1]*arr[start+len+1]
@@ -70,11 +70,11 @@ function calc(dimensStr, resEl){
             middleMatr[start][start+len]=minMiddle;
         }
     }
-    let resStrObj = {str: ''};
+    var resStrObj = {str: ''};
     writeExpr(middleMatr, 0, arr.length - 2, resStrObj);
     resEl.innerHTML = resStr + '<div>' + resStrObj.str.substr(1, resStrObj.str.length - 2) + '</div>';
 }
 
-window.onload = () => { document.getElementById('doOp').onclick = () => {
+window.onload = function(){ document.getElementById('doOp').onclick = function() {
     calc(document.getElementById('dimens').value, document.getElementById('result'));
 }};
