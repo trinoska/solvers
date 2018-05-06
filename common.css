@@ -1,0 +1,17 @@
+input[type=button]{
+    background-color: white;
+    text-decoration: underline;
+    border: none;
+}
+
+td{
+    border: 1px solid green;
+    padding: 5px;
+}
+table{
+    border-collapse: collapse;
+}
+
+input[type=text]{
+    border: none;
+}
