@@ -2,17 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Shamir</title>
+    <title>Шифр Шамира</title>
     <link rel="stylesheet" href="common.css"/>
     <script src="polyfill.js"></script>
     <script src="inv_pov.js"></script>
+    <script src="radio_help.js"></script>
     <script src="6-shamir.js"></script>
 </head>
 <body>
 <form>
     <label for="PVal">P:</label><input type="text" id="PVal" size="5"/>
-    <label for="CaVal">Ca:</label><input type="text" id="CaVal" size="5"/>
-    <label for="CbVal">Cb:</label><input type="text" id="CbVal" size="5"/>
+    <input type="radio" name="COrDa" value="C" id="DaVal" checked="checked"/><label for="DaVal">C:</label>
+    <input type="radio" name="COrDa" value="D" id="CaVal"/><label for="CaVal">D:</label>
+    <input type="text" id="COrDaVal" size="5"/>
+    <input type="radio" name="COrDb" value="C" id="DbVal" checked="checked"/><label for="DbVal">C:</label>
+    <input type="radio" name="COrDb" value="D" id="CbVal"/><label for="CbVal">D:</label>
+    <input type="text" id="COrDbVal" size="5"/>
     <label for="MVal">m:</label><input type="text" id="MVal" size="5"/>
     <input id="doOp" type="button" value="Считать">
 </form>
