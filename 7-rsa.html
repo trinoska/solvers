@@ -6,13 +6,16 @@
     <link rel="stylesheet" href="common.css"/>
     <script src="polyfill.js"></script>
     <script src="inv_pov.js"></script>
+    <script src="radio_help.js"></script>
     <script src="7-rsa.js"></script>
 </head>
 <body>
 <form>
     <label for="PVal">P:</label><input type="text" id="PVal" size="5"/>
     <label for="QVal">Q:</label><input type="text" id="QVal" size="5"/>
-    <label for="DVal">D:</label><input type="text" id="DVal" size="5"/>
+    <input type="radio" name="COrD" value="C" id="DVal"/><label for="DVal">C:</label>
+    <input type="radio" name="COrD" value="D" id="CVal" checked="checked"/><label for="CVal">D:</label>
+    <input type="text" id="COrDVal" size="5"/>
     <label for="MVal">m:</label><input type="text" id="MVal" size="5"/>
     <input id="doOp" type="button" value="Считать">
 </form>
