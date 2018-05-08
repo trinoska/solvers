@@ -1,4 +1,6 @@
 function findInverse(number, modulo) {
+    number = parseInt(number);
+    modulo = parseInt(modulo);
     var resStrs = [];
     var tgcd1 = modulo, tgcd2 = number;
     var tx1 = 0, tx2 = 1;
@@ -26,6 +28,9 @@ function findInverse(number, modulo) {
 }
 
 function fastPow(number, index, modulo){
+    number = parseInt(number);
+    index = parseInt(index);
+    modulo = parseInt(modulo);
     if(number === 0){
         return 0;
     }
