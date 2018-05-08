@@ -16,7 +16,7 @@ function calc(p, q, d, m, el){
     var powCheck = fastPow(powRes.num, d, n);
     resStr += '<div>Проверка</div> <div> m = s ^ D mod N = ' + powRes.num + ' ^ ' + d + ' mod ' + n + '</div>';
     resStr += powCheck.str;
-    resStr += 'm = ' + powCheck.num;
+    resStr += '<div> m = ' + powCheck.num +' </div>';
     el.innerHTML = resStr;
 }
 
