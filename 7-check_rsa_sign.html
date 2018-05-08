@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Проверка RSA</title>
+    <link rel="stylesheet" href="common.css"/>
+    <script src="polyfill.js"></script>
+    <script src="inv_pov.js"></script>
+    <script src="7-check_rsa_sign.js"></script>
+</head>
+<body>
+<form>
+    <label for="NVal">N:</label><input type="text" id="NVal" size="5"/>
+    <label for="DVal">D:</label><input type="text" id="DVal" size="5"/>
+    <label for="SVal">s:</label><input type="text" id="SVal" size="5"/>
+    <input id="doOp" type="button" value="Считать">
+</form>
+<div id="result"></div>
+</body>
+</html>
