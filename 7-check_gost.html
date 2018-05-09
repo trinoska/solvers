@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Проверка подписи ГОСТ</title>
+    <link rel="stylesheet" href="common.css"/>
+    <script src="polyfill.js"></script>
+    <script src="inv_pov.js"></script>
+    <script src="7-check_gost.js"></script>
+</head>
+<body>
+<form>
+    <label for="PVal">p:</label><input type="text" id="PVal" size="5"/>
+    <label for="QVal">q:</label><input type="text" id="QVal" size="5"/>
+    <label for="AVal">a:</label><input type="text" id="AVal" size="5"/>
+    <label for="YVal">y:</label><input type="text" id="YVal" size="5"/>
+    <label for="SVal">s:</label><input type="text" id="SVal" size="5"/>
+    <label for="RVal">r:</label><input type="text" id="RVal" size="5"/>
+    <label for="MVal">m:</label><input type="text" id="MVal" size="5"/>
+    <input id="doOp" type="button" value="Считать">
+</form>
+<div id="result"></div>
+</body>
+</html>
