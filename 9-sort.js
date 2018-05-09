@@ -3,17 +3,17 @@ function getSortedArr(arrStr){
     var arrInds = arr.map(function(v, i) {
         return [i + 1, parseInt(v)];
     });
-    arrInds = selectionSort(arrInds);
+    arrInds = insertionSort(arrInds);
     return arrInds;
 }
 
-function selectionSort(arr){
+function insertionSort(arr){
     var n = arr.length;
-    for (var i = 0; i < n-1; i++)
-    { var min = i;
-        for (var j = i+1; j < n; j++)
-        { if (arr[j][1] < arr[min][1]) min = j; }
-        var t = arr[min]; arr[min] = arr[i]; arr[i] = t;
+    for (var i = 0; i < n; i++)
+    { var v = arr[ i ], j = i-1;
+        while (j >= 0 && arr[j][1] > v[1])
+        { arr[j+1] = arr[j]; j--; }
+        arr[j+1] = v;
     }
     return arr;
 }
