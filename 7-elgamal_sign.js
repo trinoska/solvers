@@ -15,7 +15,7 @@ function calc(p, g, x, k, m, el){
     var t = t0;
     var cnt = 0;
     if(tNeg){
-        cnt = Math.ceil(Math.abs(t) / (p - 1));
+        cnt = Math.ceil(-t / (p - 1));
         t += (p - 1) * cnt;
     }
     var u = t % (p - 1);
@@ -27,6 +27,9 @@ function calc(p, g, x, k, m, el){
             (cnt * (p - 1) + t0) + ' mod ' + (p - 1) + ' = '
         ) : '' )
         + u + '</div>';
+    if(tNeg){
+        resStr += '<div>Число ' +cnt + ' получено так: Ceil(-1 * (' + t0 + ')' + ' / ' + (p - 1)+ ') = ' + cnt +' </div>';
+    }
     resStr += '<div>s = k ^ (-1) * u mod (p - 1) = ' +
         k + ' ^ (-1) * ' + u + ' mod ' + (p - 1) +
         '</div>';
