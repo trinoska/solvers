@@ -42,7 +42,14 @@ function huffmanCode(probs, probsInds, syms){
     var h = 0;
     for(var i = 0; i < probs.length; i++){
         h -= probs[i] * Math.log(probs[i]) / Math.log(2);
-        resStr += '(' + (-probs[i]) + ' * ' + procNum(Math.abs(Math.log(probs[i]) / Math.log(2))) + ')';
+        resStr += '(' + procNum(probs[i]) + ' * ' + procNum(Math.abs(Math.log(probs[i]) / Math.log(2))) + ')';
+        if(i !== probs.length - 1){
+            resStr += ' + ';
+        }
+    }
+    resStr += ' = ';
+    for(var i = 0; i < probs.length; i++){
+        resStr += procNum(probs[i] *  procNum(Math.abs(Math.log(probs[i]) / Math.log(2))));
         if(i !== probs.length - 1){
             resStr += ' + ';
         }
@@ -91,7 +98,7 @@ function huffmanCodeRec(n, probs, codes, lengths, probTbl){
         }
         probs[j]=q;
         huffmanCodeRec(n-1, probs, codes, lengths, probTbl);
-        probTbl[n - 3][j] = rp1 + ' + ' + rp2 + ' = ' + probTbl[n - 3][j];
+        probTbl[n - 3][j] = procNum(rp1) + ' + ' + procNum(rp2) + ' = ' + probTbl[n - 3][j];
             str=codes[j];
         l=lengths[j];
         for(i=j; i<n-2; i++){
@@ -109,14 +116,25 @@ function huffmanCodeRec(n, probs, codes, lengths, probTbl){
     }
 }
 
+function insertionSort(arr, func){
+    var n = arr.length;
+    for (var i = 0; i < n; i++)
+    { var v = arr[ i ], j = i-1;
+        while (j >= 0 && func(arr[j], v) > 0)
+        { arr[j+1] = arr[j]; j--; }
+        arr[j+1] = v;
+    }
+    return arr;
+}
+
 function calc(pStr, symsStr, el){
     var ps = pStr.split(' ').map(function (v){return parseFloat(v);});
     var syms = symsStr.split(' ');
     var psInds = ps.map(function (v, i) {
         return [i, v];
     });
-    psInds.sort(function(n1, n2){return n2[1] - n1[1]});
-    ps.sort(function(n1, n2){return n2 - n1});
+    psInds = insertionSort(psInds, function(n1, n2){return n2[1] - n1[1]});
+    ps = insertionSort(ps, function(n1, n2){return n2 - n1});
     el.innerHTML = huffmanCode(ps, psInds, syms);
 }
 
